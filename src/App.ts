@@ -6,9 +6,11 @@ class App {
 
   constructor() {
     this.express = express();
-    this.middlewares();
     this.routes();
+    this.middlewares();
+
   }
+
 
   private middlewares(): void {
     this.express.use(cors());
@@ -17,7 +19,7 @@ class App {
 
   private routes(): void {
     this.express.get("/", (req, res) => {
-      return res.send("hellow yang ");
+      return res.send("hello yang ");
     });
   }
 }
