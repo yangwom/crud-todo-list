@@ -1,5 +1,7 @@
-import app from './App'
+import app from './App';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const PORT = 3000
+const { PORT } = process.env || 3000
 
 app.listen(PORT, () => console.log('class é muito top'))
