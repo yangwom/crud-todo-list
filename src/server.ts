@@ -1,4 +1,4 @@
-import app from './api'
+import app from './App'
 
 const PORT = 3000
 

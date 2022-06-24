@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-class app {
+class App {
   public express: express.Application;
 
   constructor() {
@@ -22,4 +22,4 @@ class app {
   }
 }
 
-export default new app().express;
+export default new App().express;
