@@ -1,4 +1,1 @@
-const a: string = 'yang';
-
-
-console.log(a)
+const nome: string = 'yang';
