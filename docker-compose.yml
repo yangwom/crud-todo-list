@@ -51,6 +51,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
 
+
 # Lista de redes que os containeres irão utilizar
 networks:
   # Rede padrão, criada automaticamente
