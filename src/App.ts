@@ -1,5 +1,5 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
 
 class App {
   public express: express.Application;
@@ -8,9 +8,7 @@ class App {
     this.express = express();
     this.routes();
     this.middlewares();
-
   }
-
 
   private middlewares(): void {
     this.express.use(cors());
@@ -18,9 +16,7 @@ class App {
   }
 
   private routes(): void {
-    this.express.get("/", (req, res) => {
-      return res.send("hello yang ");
-    });
+    this.express.get('/', (req, res) => res.send('hello yang '));
   }
 }
 
