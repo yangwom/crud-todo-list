@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize/types';
 import connection from './connection';
+import tasksModel from './tasksModel';
 
 
 const userModel = connection.define('users', {
@@ -25,6 +26,10 @@ const userModel = connection.define('users', {
 		allowNull: false,
 	}
 
+});
+
+userModel.hasMany(tasksModel,{
+	foreignKey: 'userId', as: 'user'
 });
 
 export default userModel;
