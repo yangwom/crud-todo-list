@@ -29,7 +29,7 @@ const userModel = connection.define('users', {
 });
 
 userModel.hasMany(tasksModel,{
-	foreignKey: 'userId', as: 'user'
+	foreignKey: 'userId', as: 'task'
 });
 
 export default userModel;

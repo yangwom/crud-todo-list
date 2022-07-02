@@ -26,6 +26,8 @@ const tasksModel = connection.define('tasks', {
 	},
 });
 
-tasksModel.hasOne(userModel);
+tasksModel.hasOne(userModel, {
+	foreignKey: 'userId', as: 'user'
+});
 
 export default tasksModel;
