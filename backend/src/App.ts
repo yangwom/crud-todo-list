@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import errorMiddleware from './Error/errorMiddleware';
 
 class App {
 	public express: express.Application;
@@ -13,6 +14,7 @@ class App {
 	private middlewares(): void {
 		this.express.use(cors());
 		this.express.use(express.json());
+		this.express.use(errorMiddleware);
 	}
 
 	private routes(): void {
