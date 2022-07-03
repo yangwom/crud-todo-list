@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import errorMiddleware from './Error/errorMiddleware';
-import usersModel from './model/usersModel';
+import router from './router';
 
 class App {
 	public express: express.Application;
@@ -19,10 +19,7 @@ class App {
 	}
 
 	private routes(): void {
-		this.express.get('/', async (req, res) => {
-			const data = await usersModel.findAll();
-			return res.status(200).json(data);
-		});
+		this.express.use(router);
 	}
 }
 
