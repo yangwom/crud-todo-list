@@ -1,9 +1,8 @@
-import { DataTypes } from 'sequelize/types';
+import { DataTypes, } from 'sequelize';
 import connection from './connection';
 import tasksModel from './tasksModel';
 
-
-const userModel = connection.define('users', {
+const userModel = connection.define('user', {
 	id: {
 		type: DataTypes.INTEGER,
 		autoIncrement: true,
@@ -26,10 +25,13 @@ const userModel = connection.define('users', {
 		allowNull: false,
 	}
 
+},
+{
+	timestamps: false,
 });
 
-userModel.hasMany(tasksModel,{
-	foreignKey: 'userId', as: 'task'
-});
+
+userModel.hasMany(tasksModel);
+tasksModel.belongsTo(userModel);
 
 export default userModel;

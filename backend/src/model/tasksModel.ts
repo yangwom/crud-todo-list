@@ -1,8 +1,7 @@
-import { DataTypes } from 'sequelize/types';
+import { DataTypes  } from 'sequelize';
 import connection from './connection';
-import userModel from './usersModel';
 
-const tasksModel = connection.define('tasks', {
+const tasksModel = connection.define('task', {
 	id: {
 		type: DataTypes.INTEGER,
 		autoIncrement: true,
@@ -24,10 +23,11 @@ const tasksModel = connection.define('tasks', {
 		onUpdate: 'CASCADE',
 		onDelete: 'CASCADE',
 	},
+},
+{
+	timestamps:false
 });
 
-tasksModel.hasOne(userModel, {
-	foreignKey: 'userId', as: 'user'
-});
+
 
 export default tasksModel;
