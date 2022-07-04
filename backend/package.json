@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "sucrase ./src -d ./dist --transforms typescript,imports",
-    "test": "mocha ./src/test/**/*$NAME*.test.ts --exit"
+    "test": "mocha ./src/tests/**/*$NAME*.test.ts --exit"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,13 @@
     "@types/mocha": "^9.1.1",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "chai": "^4.3.6",
     "eslint": "^8.18.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.0.0",
     "sequelize-test-helpers": "^1.4.2",
+    "sinon": "^14.0.0",
     "sucrase": "^3.21.1",
     "typescript": "^4.7.4"
   },

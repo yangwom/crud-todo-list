@@ -1,11 +1,14 @@
 import { Model } from 'sequelize/types';
 import model from '../model/usersModel';
 import ErrorStatus from '../Error/ErrorStatus';
+import tasksModel from '../model/tasksModel';
 import jwt from 'jsonwebtoken';
 import jwtConfig, { JWT_SECRET } from '../jwtConfig/jwtConfig';
 
-class UserService {
+class UserService<T> {
 	data: Model[];
+
+	dataId: Model<T, T> | null;
 
 	token: string;
 
@@ -26,11 +29,23 @@ class UserService {
 	async getAll() {
 
 		this.data = await model.findAll({
-
+			include: { model: tasksModel },
 			attributes: { exclude: ['password'] },
+
 		});
 
 		return this.data;
+	}
+
+	async getById(id: string) {
+		this.dataId = await model.findByPk(id, {
+			include: { model: tasksModel },
+			attributes: { exclude : ['password']}
+		});
+
+		if(!this.dataId) throw new ErrorStatus(404, 'User Not Found');
+
+		return this.dataId;
 	}
 }
 
