@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 class UserController {
 	async getAll(req: Request, res: Response, next: NextFunction) {
 		try {
+
 			const data = await new UserService().getAll();
 
 			return res.status(StatusCodes.OK).json(data);
@@ -12,6 +13,17 @@ class UserController {
 			next(error);
 		}
 
+	}
+
+	async create(req: Request, res: Response, next: NextFunction) {
+		try {
+			const generetedToken = await new UserService().create(req.body);
+
+			return res.status(StatusCodes.CREATED).json({ token: generetedToken });
+
+		} catch(error) {
+			next(error);
+		}
 	}
 }
 
