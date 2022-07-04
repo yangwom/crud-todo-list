@@ -37,9 +37,11 @@ class UserService<T> {
 		return this.data;
 	}
 
-	async getById(id: string) {
+	async getById(id: string ) {
 		this.dataId = await model.findByPk(id, {
+
 			include: { model: tasksModel },
+
 			attributes: { exclude : ['password']}
 		});
 

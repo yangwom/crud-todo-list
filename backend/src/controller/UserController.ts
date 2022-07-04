@@ -21,6 +21,17 @@ class UserController {
 			next(error);
 		}
 	}
+
+	async getById(req: Request, res: Response, next: NextFunction) {
+		const { id } = req.params;
+		try {
+			const data = await new UserService().getById(id);
+
+			return res.status(StatusCodes.OK).json(data);
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 export default UserController;

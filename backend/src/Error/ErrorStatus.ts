@@ -1,3 +1,4 @@
+// Breno que me ensinou
 class ErrorStatus extends Error {
 	public status: number;
 
