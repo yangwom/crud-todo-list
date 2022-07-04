@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import errorMiddleware from './Error/errorMiddleware';
+import HandleError from './Error/HandleError';
 import router from './router';
 
 class App {
@@ -15,7 +15,7 @@ class App {
 		this.express.use(cors());
 		this.express.use(express.json());
 		this.express.use(router);
-		this.express.use(errorMiddleware);
+		this.express.use(new HandleError().errorMiddleware);
 	}
 
 }
