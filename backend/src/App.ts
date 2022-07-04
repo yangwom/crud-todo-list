@@ -8,19 +8,16 @@ class App {
 
 	constructor() {
 		this.express = express();
-		this.routes();
 		this.middlewares();
 	}
 
 	private middlewares(): void {
 		this.express.use(cors());
 		this.express.use(express.json());
+		this.express.use(router);
 		this.express.use(errorMiddleware);
 	}
 
-	private routes(): void {
-		this.express.use(router);
-	}
 }
 
 export default new App().express;

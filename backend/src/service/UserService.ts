@@ -9,17 +9,7 @@ class UserService {
 
 	token: string;
 
-	async getAll() {
-
-		this.data = await model.findAll({
-
-			attributes: { exclude: ['password'] },
-		});
-
-		return this.data;
-	}
-
-	async create({ name, email, password }) {
+	async create({ name, email, password } ) {
 		const exist = await model.findOne({ where: { email } });
 
 		if(exist) throw new ErrorStatus(409, 'User already registered');
@@ -31,6 +21,16 @@ class UserService {
 		this.token = jwt.sign({ data: createdUser }, JWT_SECRET, jwtConfig);
 
 		return this.token;
+	}
+
+	async getAll() {
+
+		this.data = await model.findAll({
+
+			attributes: { exclude: ['password'] },
+		});
+
+		return this.data;
 	}
 }
 
