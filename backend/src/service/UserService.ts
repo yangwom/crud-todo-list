@@ -19,9 +19,8 @@ class UserService<T> {
 
 		await model.create({ name, email, password });
 
-		const createdUser = exist;
 
-		this.token = jwt.sign({ data: createdUser }, JWT_SECRET, jwtConfig);
+		this.token = jwt.sign({ data: { name, email } }, JWT_SECRET, jwtConfig);
 
 		return this.token;
 	}
@@ -48,6 +47,14 @@ class UserService<T> {
 		if(!this.dataId) throw new ErrorStatus(404, 'User Not Found');
 
 		return this.dataId;
+	}
+
+	async delete(id: string) {
+		const data = await this.getById(id);
+
+		if(!data) throw new ErrorStatus(404, 'User Not Found');
+
+		await model.destroy({ where: { id } });
 	}
 }
 
